@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love</title>
+
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== UI ===== */
+#ui {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== LOVE GERAK ===== */
+#ui .love {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -225px 0 0 -225px; 
+}
+
+.love_word {
+  color: #ea80b0;
+  font-size: 1.4rem;
+  font-family: "Dosis", sans-serif;
+  transform: translateY(-100%) rotateZ(-30deg);
+  text-shadow: 0 0 10px #fff;
+  letter-spacing: 2px;
+}
+
+/* ===== Q 💕 ===== */
+#centerQ {
+  position: absolute;
+  top: 48.5%;
+  left: 52.3%;
+  transform: translate(-50%, -50%);
+  font-family: "Serif", sans-serif;
+  font-size: 5rem;
+  color: #ff69b4;
+  text-shadow:
+    0 0 10px #ff69b4,
+    0 0 20px #ff69b4,
+    0 0 40px #ff1493;
+  animation: heartbeat 1.5s infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ===== ANIMASI ===== */
+.love_horizontal {
+  animation: horizontal 10000ms infinite alternate ease-in-out;
+}
+
+.love_vertical {
+  animation: vertical 20000ms infinite linear;
+}
+
+/* ===== DENYUT DENYUT ===== */
+@keyframes heartbeat {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  10%  { transform: translate(-50%, -50%) scale(1.25); }
+  20%  { transform: translate(-50%, -50%) scale(1); }
+  30%  { transform: translate(-50%, -50%) scale(1.15); }
+  40%  { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes horizontal {
+  from { transform: translateX(0px); }
+  to   { transform: translateX(450px); }
+}
+
+@keyframes vertical {
+  0%   { transform: translateY(180px); }
+  10%  { transform: translateY(45px); }
+  15%  { transform: translateY(4.5px); }
+  18%  { transform: translateY(0px); }
+  20%  { transform: translateY(4.5px); }
+  22%  { transform: translateY(34.6px); }
+  24%  { transform: translateY(64.2px); }
+  25%  { transform: translateY(112.5px); }
+  26%  { transform: translateY(64.2px); }
+  28%  { transform: translateY(34.6px); }
+  30%  { transform: translateY(4.5px); }
+  32%  { transform: translateY(0px); }
+  35%  { transform: translateY(4.5px); }
+  40%  { transform: translateY(45px); }
+  50%  { transform: translateY(180px); }
+  71%  { transform: translateY(428.5px); }
+  72.5%{ transform: translateY(441.1px); }
+  75%  { transform: translateY(450px); }
+  77.5%{ transform: translateY(441.1px); }
+  79%  { transform: translateY(428.5px); }
+  100% { transform: translateY(180px); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="ui">
+  <!-- Q DI TENGAH -->
+  <div id="centerQ">Q</div>
+</div>
+
+<script>
+const ui = document.getElementById("ui");
+const total = 100;
+
+for (let i = 1; i <= total; i++) {
+  const love = document.createElement("div");
+  love.className = "love";
+
+  const h = document.createElement("div");
+  h.className = "love_horizontal";
+  h.style.animationDelay = `-${i * 300}ms`;
+
+  const v = document.createElement("div");
+  v.className = "love_vertical";
+  v.style.animationDelay = `-${i * 300}ms`;
+
+  const w = document.createElement("div");
+  w.className = "love_word";
+  w.innerText = "ILY";
+
+  v.appendChild(w);
+  h.appendChild(v);
+  love.appendChild(h);
+  ui.appendChild(love);
+}
+</script>
+
+</body>
+</html>
